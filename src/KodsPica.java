@@ -3,17 +3,35 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
 
 import javax.swing.JOptionPane;
 
 public class KodsPica {
+	static String failaNosaukums;
 
+	public static void ierakstit(String vards,String adrese,String telefons,String piegade,String picasIzvele,int izmers,String piedevas) {
+		try {
+		failaNosaukums=vards+" pasûtîjums";
+		FileWriter fw = new FileWriter(failaNosaukums);
+		PrintWriter raksta = new PrintWriter(fw);
+		raksta.println("Pasûtîtâja vârds = "+vards);
+		raksta.println("Pasûtîtâja adrese = "+adrese);
+		raksta.println("Pasûtîtâja telefona nummurs = "+telefons);
+		raksta.println("Pasûtîtâjs saòems savu pasutîjumu: "+piegade);
+		raksta.println("Pasûtîjums = "+picasIzvele+" "+izmers+" cm ar "+piedevas);
+
+		raksta.close();
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Kïûme ierakstot failâ!", "Kïûme!", JOptionPane.ERROR_MESSAGE);	
+
+		}
+	}
 	
 	public static void main(String[] args) {
 		
 		JOptionPane.showMessageDialog(null, "Sveicinâti picçrijâ!");
-				
+		
+		double summa=0;
 		String picasIzvele;
 		String piedevas;
 		int izmers;
@@ -35,12 +53,20 @@ public class KodsPica {
 		String vards;
 		String adrese;
 		String telefons;
-		boolean piegade;
+		String piegade;
+	
 		
 		vards=(JOptionPane.showInputDialog("Ievadiet savu vârdu:"));
 		adrese=(JOptionPane.showInputDialog("Ievadiet savu adresi:"));
 		telefons=(JOptionPane.showInputDialog("Ievadiet savu telefona nummuru:"));
-
+		piegade=(JOptionPane.showInputDialog("Ja vçlaties saòemt pasûtîjumu ar piegâdi - piegade | Ja vçlaties saòemt uz vietas - uz vietas"));
+		piegade=piegade.toLowerCase();
+		if(piegade=="piegade") {
+			summa=summa+3.5;
+		}else if(piegade=="uz vietas") {
+			summa=summa+0;
+		}
+ierakstit(vards,adrese,telefons,piegade,picasIzvele,izmers,piedevas);
 
 
 
