@@ -13,7 +13,7 @@ public class KodsPica {
 	public static void main(String[] args) {
 		
 		JOptionPane.showMessageDialog(null, "Sveicinâti picçrijâ!");
-		
+				
 		String picasIzvele;
 		String piedevas;
 		int izmers;
@@ -32,9 +32,17 @@ public class KodsPica {
 		piedevas=piedevas.toLowerCase();	
 		}while(!piedevas.matches("skinkis|salami|gurkisi|ananass|senes|siers"));
 		
-		System.out.println(picasIzvele);
-		System.out.println(izmers);
-		System.out.println(piedevas);
+		String vards;
+		String adrese;
+		String telefons;
+		boolean piegade;
+		
+		vards=(JOptionPane.showInputDialog("Ievadiet savu vârdu:"));
+		adrese=(JOptionPane.showInputDialog("Ievadiet savu adresi:"));
+		telefons=(JOptionPane.showInputDialog("Ievadiet savu telefona nummuru:"));
+
+
+
 
 }
 }
