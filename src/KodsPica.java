@@ -67,6 +67,20 @@ public class KodsPica {
 		return summa;		
 	}	
 
+	public static void nolasit() {
+		String teksts;
+		try{
+			
+			FileReader fr = new FileReader(failaNosaukums);
+			BufferedReader lasa = new BufferedReader(fr);
+			while((teksts=lasa.readLine())!=null){
+				JOptionPane.showMessageDialog(null, teksts);
+			}
+			lasa.close();
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(null, "Kïûme nolasot failu!", "Kïûme!", JOptionPane.ERROR_MESSAGE);
+		}
+	}
 
 	public static void main(String[] args) {
 		 
@@ -107,5 +121,7 @@ public class KodsPica {
 
 		ierakstit(vards,adrese,telefons,piegade,picasIzvele,izmers,piedevas,summa);
 
+		nolasit();
+		
 }
 }
