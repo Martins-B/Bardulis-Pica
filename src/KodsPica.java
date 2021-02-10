@@ -13,16 +13,11 @@ public class KodsPica {
 		failaNosaukums=vards+" pasûtîjums";
 		FileWriter fw = new FileWriter(failaNosaukums);
 		PrintWriter raksta = new PrintWriter(fw);
-		raksta.println("Pasûtîtâja vârds = "+vards);
-		raksta.println("Pasûtîtâja adrese = "+adrese);
-		raksta.println("Pasûtîtâja telefona nummurs = "+telefons);
-		raksta.println("Pasûtîtâjs saòems savu pasutîjumu: "+piegade);
-		raksta.println("Pasûtîjums = "+picasIzvele+" "+izmers+" cm ar "+piedevas);
-		raksta.println("Pasûtîjuma apmaksas summa = "+summa);
+		raksta.println("Pasûtîtâja vârds = "+vards+". Pasûtîtâja adrese = "+adrese+". Pasûtîtâja telefona nummurs = "+telefons+". Pasûtîtâjs saòems savu pasutîjumu: "+piegade);
+		raksta.println("Pasûtîjums = "+picasIzvele+" "+izmers+" cm ar "+piedevas+". Pasûtîjuma apmaksas summa = "+summa+" EUR");
 		raksta.close();
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Kïûme ierakstot failâ!", "Kïûme!", JOptionPane.ERROR_MESSAGE);	
-
 		}
 	}
 	
