@@ -8,13 +8,13 @@ import javax.swing.JOptionPane;
 public class KodsPica {
 	static String failaNosaukums;
 
-	public static void ierakstit(String vards,String adrese,String telefons,String piegade,String picasIzvele,int izmers,String piedevas,double summa) {
+	public static void ierakstit(String vards,String adrese,String telefons,String piegade,String picasIzvele,int izmers,String piedevas,double summa,String samaksa) {
 		try {
 		failaNosaukums=vards+" pasûtîjums";
 		FileWriter fw = new FileWriter(failaNosaukums);
 		PrintWriter raksta = new PrintWriter(fw);
 		raksta.println("Pasûtîtâja vârds = "+vards+". Pasûtîtâja adrese = "+adrese+". Pasûtîtâja telefona nummurs = "+telefons+". Pasûtîtâjs saòems savu pasutîjumu: "+piegade);
-		raksta.println("Pasûtîjums = "+picasIzvele+" "+izmers+" cm ar "+piedevas+". Pasûtîjuma apmaksas summa = "+summa+" EUR");
+		raksta.println("Pasûtîjums = "+picasIzvele+" "+izmers+" cm ar "+piedevas+". Pasûtîjuma apmaksas summa = "+summa+" EUR "+"Pasûtîtâjs maksâs "+samaksa+".");
 		raksta.close();
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Kïûme ierakstot failâ!", "Kïûme!", JOptionPane.ERROR_MESSAGE);	
@@ -103,6 +103,7 @@ public class KodsPica {
 		String adrese;
 		String telefons;
 		String piegade;
+		String samaksa;
 			
 		vards=(JOptionPane.showInputDialog("Ievadiet savu vârdu:"));
 		adrese=(JOptionPane.showInputDialog("Ievadiet savu adresi:"));
@@ -112,9 +113,14 @@ public class KodsPica {
 		piegade=piegade.toLowerCase();
 		}while(!piegade.matches("piegade|uz vietas"));
 		
+		do {
+			samaksa=(JOptionPane.showInputDialog("Ja veiksiet apmaksu ar karti norâdiet - ar karti | Ja veiksiet apmaksu skaidru naudu norâdiet - skaidra"));
+			samaksa=samaksa.toLowerCase();
+		}while(!samaksa.matches("ar karti|skaidra"));
+		
 		double summa=summa(piegade,picasIzvele,izmers, piedevas);
 
-		ierakstit(vards,adrese,telefons,piegade,picasIzvele,izmers,piedevas,summa);
+		ierakstit(vards,adrese,telefons,piegade,picasIzvele,izmers,piedevas,summa,samaksa);
 
 		nolasit();
 		
